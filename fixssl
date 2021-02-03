@@ -1,0 +1,47 @@
+IMPORTANT URL https://www.cosvernauta.com/2020/07/ssl-handshake-failure-en-java-7-que-significa-y-como-solucionarlo.html
+COMMAND TO GENERATE PEM/DER FILE
+https://stackoverflow.com/questions/7885785/using-openssl-to-get-the-certificate-from-a-server
+
+DEBUG SSL 
+https://stackoverflow.com/questions/2642046/is-there-a-way-to-load-a-different-cacerts-than-the-one-specified-in-the-java-ho
+
+
+  120  find keytool
+  121  find . keytool
+  122  find . javac
+  123  find . -name javac
+  124  cd /opt
+  125  ls
+  126  openssl s_client -showcerts -server gitlab.com -connect gitlab.com:443  > servername.pem
+  127  openssl s_client -showcerts -server gitlab -connect gitlab.com:443  > servername.pem
+  128  openssl s_client -showcerts -connect gitlab.com:443 < /dev/null | openssl x509 -outform DER > derp.der
+  129  ls -ltr
+  130  nano derp.der 
+  131  ls -ltr
+  132  keytool -v -import -file derp.der  -alias servername -keystore cacerts -storepass
+  133  cd java
+  134  cd jre
+  135  ls
+  136  cd bin
+  137  ls
+  138  pwd
+  139  cd /opt
+  140  /opt/java/jre/bin/keytool -v -import -file derp.der  -alias servername -keystore cacerts -storepass
+  141  /opt/java/jre/bin/keytool -v -import -file derp.der  -alias servername -keystore cacerts -storepass changeit
+  142  /opt/java/jre/bin/keytool -v -list -keystore cacerts -storepass password | grep -i alias
+  143  /opt/java/jre/bin/keytool -v -list -keystore cacerts -storepass changeit | grep -i alias
+  144  ls
+  145  /opt/java/jre/bin/keytool -v -import -file derp.der  -alias servername2 -keystore /opt/cacerts -storepass changeit
+  146  /opt/java/jre/bin/keytool -v -import -file derp.der  -alias servername2 -keystore /opt/foo  -storepass changeit
+  147  ls
+  148  ls -ltr
+  149  java -Djavax.net.ssl.trustStore=foo Main
+  150  java -Djavax.net.ssl.trustStore=/  Main
+  151  java -Djavax.net.ssl.trustStore=foo Main
+  152  java -Djavax.net.ssl.trustStore=foo -Djavax.net.debug=ssl:handshake Main
+  153  java -Djavax.net.ssl.trustStore=foo -Djavax.net.ssl.keyStore=foo -Djavax.net.debug=ssl:handshake Main
+  154  java -version
+  155  java -Djavax.net.ssl.trustStore=foo -Djavax.net.ssl.keyStore=foo -Dhttps.protocols=TLSv1.2,TLSv1.1,TLSv1 -Djavax.net.debug=ssl:handshake Main
+  156  CLEAR
+  157  clear
+  158  history
